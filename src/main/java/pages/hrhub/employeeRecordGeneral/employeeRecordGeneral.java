@@ -8,9 +8,14 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.ISelect;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -123,8 +128,19 @@ public WebElement editGeneral;
 
 @FindBy(how = How.CSS, using = ".Drop.Drop--expanded  input")
     public WebElement tfCountry;
- @FindBy(how = How.CSS, using = "div:nth-of-type(2) > .Field.Field-is-invalid > .Field-control > .Field-message")
+
+@FindBy(how = How.CSS, using = "div:nth-of-type(2) > .Field.Field-is-invalid > .Field-control > .Field-message")
     public WebElement errMsgCountry;
+
+@FindBy(how = How.LINK_TEXT, using = "United States")
+public WebElement tlvCountryUS;
+
+@FindBy(how = How.CSS, using = "div#state  .Drop-header.Drop-toggle.is-clickable")
+public WebElement ddState;
+
+@FindBy(how = How.CSS, using = ".Callout.Callout--attention-dark.Callout--noPadding.EditEmployeeForm > .EditEmployeeForm-section > .EditEmployeeForm-content.noGutters.row.row-range-12 > div:nth-of-type(2) > .Field.Field-is-invalid > .Field-control > .Field-message")
+public WebElement errMsgState;
+
 @FindBy(how = How.CSS, using = "input#city")
     public WebElement tfCity;
 @FindBy(how = How.CSS, using = "div:nth-of-type(3) > .Field.Field-is-invalid > .Field-control > .Field-message")
@@ -621,12 +637,138 @@ public WebElement ddCivilStatus;
         tfCity.sendKeys(moreThan60);
     }
 
+    public void inputValidCity(String valid){
+        tfCity.clear();
+        tfCity.sendKeys(valid);
+    }
+
     public void checkIfCountryFieldIsPreFilled(){
         WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         tlvCountry = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(3) > .Field.Field-is-invalid > .Field-control > .Field-message")));
 
         Boolean countryField = tlvCountry.getText().isEmpty();
         assertFalse(countryField);
+    }
+
+    //<----------------------------------------------------TOWN-------------------------------------------------------------------------------->
+    public void inputSpaceOnlyTown(String space){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfTown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+        tfTown.clear();
+        tfTown.sendKeys(space);
+        errMsgTown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+        actualErrorMessage = errMsgTown.getText();
+        expectedErrorMessage = "Please enter Town.";
+        assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
+
+    public void inputDotOnlyTown(String dot){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfTown.clear();
+        tfTown.sendKeys(dot);
+        errMsgTown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+        actualErrorMessage = errMsgTown.getText();
+        expectedErrorMessage = "Please enter Town.";
+        assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
+
+    public void inputDashOnlyTown(String dash){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfTown.clear();
+        tfTown.sendKeys(dash);
+        errMsgTown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+        actualErrorMessage = errMsgTown.getText();
+        expectedErrorMessage = "Please enter Town.";
+        assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
+
+    public void inputAlphaNumericTown(String alphaNumeric){
+        tfTown.clear();
+        tfTown.sendKeys(alphaNumeric);
+    }
+
+    public void inputNumericTown(String numeric){
+        tfTown.clear();
+        tfTown.sendKeys(numeric);
+    }
+
+    public void inputBlankTown(String blank){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfTown.clear();
+        tfTown.sendKeys(blank);
+        errMsgTown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+        actualErrorMessage = errMsgTown.getText();
+        expectedErrorMessage = "Please enter Town.";
+        assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
+
+    public void inputLessThan60Town(String lessThan60){
+        tfTown.clear();
+        tfTown.sendKeys(lessThan60);
+    }
+
+    public void inputMoreThan60Town(String moreThan60){
+        tfTown.clear();
+        tfTown.sendKeys(moreThan60);
+    }
+
+    public void inputValidTown(String valid){
+        tfTown.clear();
+        tfTown.sendKeys(valid);
+    }
+    //<----------------------------------------------------STATE-------------------------------------------------------------------------------->
+    public void chooseUSForCountryField(String country){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfCountry = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".Drop.Drop--expanded  input")));
+        tfCountry.click();
+        tfCountry.clear();
+        tfCountry.sendKeys(country);
+        tfCountry.clear();
+        tlvCountryUS = wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("United States")));
+        tlvCountryUS.click();
+    }
+    public void checkStateFieldIfDisplayed(){
+        Boolean stateField = Driver.findElement(By.cssSelector("div#state  .Drop-header.Drop-toggle.is-clickable")).isDisplayed();
+        assertTrue(stateField);
+    }
+    public void checkStateFieldIfBlank(){
+        Boolean stateField = tlvCountryUS.getText().isBlank();
+        assertTrue(stateField);
+    }
+    public void verifyErrMsgForState(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        errMsgState = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".Callout.Callout--attention-dark.Callout--noPadding.EditEmployeeForm > .EditEmployeeForm-section > .EditEmployeeForm-content.noGutters.row.row-range-12 > div:nth-of-type(2) > .Field.Field-is-invalid > .Field-control > .Field-message")));
+        actualErrorMessage = errMsgState.getText();
+        expectedErrorMessage = "Please enter State.";
+        assertEquals(expectedErrorMessage, actualErrorMessage);
+    }
+
+    public void checkIfAllStateIsPresent(){
+
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        ddState = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div#state  .Drop-header.Drop-toggle.is-clickable")));
+
+        //Getting all values inside the State Dropdown
+       /* Select select = new Select(Driver.findElement(By.cssSelector("div#state  .Drop-header.Drop-toggle.is-clickable")));
+        List <WebElement> op = select.getOptions();
+        int size = op.size();
+        for(int i =0; i<size ; i++){
+            String options = op.get(i).getText();
+        }*/
+        //Declaring Array with Equal Size to the List
+
+        List<WebElement> op= Driver.findElements(By.cssSelector("div#state  .Drop-header.Drop-toggle.is-clickable"));
+        int size = op.size();
+        String[]ddStateList = new String [size];
+        for(int i =0; i<size ; i++){
+            String stateValues = op.get(Integer.parseInt(ddStateList[i])).getText();
+        }
+
+        //Expected State List
+        String[] ddStateArray = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"};
+
+        //Comparing the retrieved list with the expected state list
+        assertArrayEquals(ddStateList, ddStateArray);
     }
 
 //Verify Name Section

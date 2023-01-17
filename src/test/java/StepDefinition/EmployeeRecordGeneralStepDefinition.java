@@ -371,9 +371,92 @@ public class EmployeeRecordGeneralStepDefinition {
         erg.inputMoreThan60City(moreThan60);
     }
 
+    @When("The user has inputted a {string} valid City")
+    public void theUserHasInputtedACity(String valid) {
+        erg.inputValidCity(valid);
+    }
 
     @Then("The country is automatically pre-filled based on the city entered.")
     public void theCountryIsAutomaticallyPreFilledBasedOnTheCityEntered() {
         erg.checkIfCountryFieldIsPreFilled();
+    }
+    //<-----------------------------------------------------------------------------Town------------------------------------------------------------------------------>
+    @When("The user has inputted a {string} space only in the Town field")
+    public void theUserHasInputtedASpaceOnlyInTheTownField(String space) {
+        erg.inputSpaceOnlyTown(space);
+    }
+
+    @When("The user has inputted a {string} dot only in the Town field")
+    public void theUserHasInputtedADotOnlyInTheTownField(String dot) {
+        erg.inputDotOnlyTown(dot);
+    }
+
+    @Then("The user should see an error message saying Please enter Town")
+    public void theUserShouldSeeAnErrorMessageSayingPleaseEnterTown() {
+    }
+
+    @When("The user has inputted a {string} dash only in the Town field")
+    public void theUserHasInputtedADashOnlyInTheTownField(String dash) {
+        erg.inputDashOnlyTown(dash);
+    }
+
+    @When("The user has inputted a {string} name with alphanumeric \\(ASCII) characters in the Town field")
+    public void theUserHasInputtedANameWithAlphanumericASCIICharactersInTheTownField(String alphaNumeric) {
+        erg.inputAlphaNumericTown(alphaNumeric);
+    }
+
+    @When("The user has inputted a {string} name with numeric characters  in the Town field")
+    public void theUserHasInputtedANameWithNumericCharactersInTheTownField(String numeric) {
+        erg.inputNumericTown(numeric);
+    }
+
+    @When("The user has left {string} blank the Town field")
+    public void theUserHasLeftBlankTheTownField(String blank) {
+        erg.inputBlankTown(blank);
+    }
+
+    @When("The user has inputted a {string} Town with less than 60 characters.")
+    public void theUserHasInputtedATownWithLessThanCharacters(String lessThan60) {
+        erg.inputLessThan60Town(lessThan60);
+    }
+
+    @When("The user has inputted a {string} Town with more than 60 characters.")
+    public void theUserHasInputtedATownWithMoreThanCharacters(String moreThan60) {
+        erg.inputMoreThan60Town(moreThan60);
+    }
+
+    @When("The user has inputted a {string} valid Town")
+    public void theUserHasInputtedAValidTown(String valid) {
+        erg.inputValidTown(valid);
+    }
+
+    @Then("The country is automatically pre-filled based on the town entered.")
+    public void theCountryIsAutomaticallyPreFilledBasedOnTheTownEntered() {
+        erg.checkIfCountryFieldIsPreFilled();
+    }
+
+    @When("The user has chosen {string} US in the Country field")
+    public void the_user_has_chosen_us_in_the_country_field(String country) {
+        erg.chooseUSForCountryField(country);
+    }
+
+    @Then("The State field should be present")
+    public void theStateFieldShouldBePresent() {
+        erg.checkStateFieldIfDisplayed();
+    }
+
+    @When("The user has left the State field blank")
+    public void theUserHasLeftTheStateFieldBlank() {
+        erg.checkStateFieldIfBlank();
+    }
+
+    @Then("The user should see an error message saying, Please enter State.")
+    public void theUserShouldSeeAnErrorMessageSayingPleaseEnterState() {
+        erg.verifyErrMsgForState();
+    }
+
+    @Then("The user should see the complete list of options for the state dropdown.")
+    public void theUserShouldSeeTheCompleteListOfOptionsForTheStateDropdown() {
+        erg.checkIfAllStateIsPresent();
     }
 }

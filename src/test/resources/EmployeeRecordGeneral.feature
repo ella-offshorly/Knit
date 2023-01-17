@@ -265,11 +265,85 @@ Feature: Employee Record - General
     And The user has clicked Submit button
     Then The user will proceed to Knit Dashboard after login
     Given The user is in the Employee Record - Edit General Page
-    When The user has inputted a "<lessThan60>" City with less than 60 characters.
+    When The user has inputted a "<valid>" valid City
     Then The country is automatically pre-filled based on the city entered.
     Examples:
-      | emailAddress            | password   | lessThan60 |
-      | testella.four@gmail.com | Welcome@08 | Lipa       |
+      | emailAddress            | password   | valid |
+      | testella.four@gmail.com | Welcome@08 | Lipa  |
+
+  Scenario Outline: To verify that the user has inputted an accepted town.
+    Given The user is in the Login Page
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has inputted a "<space>" space only in the Town field
+    Then The user should see not see an error message
+    When The user has inputted a "<dot>" dot only in the Town field
+    Then The user should see an error message saying Please enter Town
+    When The user has inputted a "<dash>" dash only in the Town field
+    Then The user should see not see an error message
+    When The user has inputted a "<alphaNumeric>" name with alphanumeric (ASCII) characters in the Town field
+    Then The user should not see an error message
+    When The user has inputted a "<numeric>" name with numeric characters  in the Town field
+    Then The user should not see an error message
+    When The user has left "<blank>" blank the Town field
+    Then The user should see an error message saying Please enter Town
+    When The user has inputted a "<lessThan60>" Town with less than 60 characters.
+    Then The user should not see an error message
+    When The user has inputted a "<moreThan60>" Town with more than 60 characters.
+    Then The typed character will no longer show in the text field.
+    Examples:
+      | emailAddress            | password   | space | dot | dash | alphaNumeric | numeric | blank | lessThan60 | moreThan60                                                    |
+      | testella.four@gmail.com | Welcome@08 |       | .   | -    | TestCity123  | 123     |       | Lipa       | 2ME8Z2Rsc8bCJhlERjHqd1EnOvgN3lxxMmSqgUJ9emtjH5RiH5YqbfBgmI6wR |
+
+  Scenario Outline: To verify that the country is automatically pre-filled based on the town entered.
+    Given The user is in the Login Page
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has inputted a "<valid>" valid Town
+    Then The country is automatically pre-filled based on the town entered.
+    Examples:
+      | emailAddress            | password   | valid |
+      | testella.four@gmail.com | Welcome@08 | Tambo |
+
+  Scenario Outline: To verify that the state is required if the country is US.
+    Given The user is in the Login Page
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has chosen US in the Country field
+    Then The State field should be present
+    When The user has left the State field blank
+    Then The user should see an error message saying, Please enter State.
+    Examples:
+      | emailAddress            | password   |
+      | testella.four@gmail.com | Welcome@08 |
+
+  Scenario Outline:   To verify that the list of options for the state dropdown is complete.
+    Given The user is in the Login Page
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has chosen "<country>" US in the Country field
+    Then The State field should be present
+    Then The user should see the complete list of options for the state dropdown.
+    Examples:
+      | emailAddress            | password   |country|
+      | testella.four@gmail.com | Welcome@08 |United |
+
 
 #------------------Verifying text labels are present. FE checking for the meantime since adding/editing employee info is in the BE-------------
   Scenario: To verify that all fields are present once the employee data is setup in the backend thru Django.
