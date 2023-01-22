@@ -54,6 +54,9 @@ public WebElement editGeneral;
 @FindBy(how = How.CSS, using = ".is-absolute.is-scrollable-y > h3:nth-of-type(4)")
     public WebElement thCitizenship;
 
+@FindBy(how = How.CSS, using = ".Field-message")
+public WebElement errMsgCitizenship;
+
 @FindBy(how = How.CSS, using = ".is-absolute.is-scrollable-y > h3:nth-of-type(5)")
     public WebElement thAdditionalCitizenship;
 
@@ -129,7 +132,7 @@ public WebElement editGeneral;
 @FindBy(how = How.CSS, using = ".Drop.Drop--expanded  input")
     public WebElement tfCountry;
 
-@FindBy(how = How.CSS, using = "div:nth-of-type(2) > .Field.Field-is-invalid > .Field-control > .Field-message")
+@FindBy(how = How.CSS, using = "[class='col-md-4']:nth-of-type(2) .Field-message")
     public WebElement errMsgCountry;
 
 @FindBy(how = How.LINK_TEXT, using = "United States")
@@ -191,17 +194,26 @@ public WebElement tlCitizenshipName;
     @FindBy(how = How.CSS, using = "input[name='additionalCitizenshipExpDate1']")
     public WebElement pickExpiryDate1;
 
+    @FindBy(how = How.CSS, using = "div:nth-of-type(4) > .Field.Field-is-invalid > .Field-control > .Field-message")
+    public WebElement errMsgAdditionalCitizenship1;
+
     @FindBy(how = How.CSS, using = "input[name='additionalCitizenship2']")
     public WebElement tfAdditionalCitizenship2;
 
     @FindBy(how = How.CSS, using = "input[name='additionalCitizenshipExpDate2']")
     public WebElement pickExpiryDate2;
 
+    @FindBy(how = How.CSS, using = "div:nth-of-type(4) > .Field.Field-is-invalid > .Field-control > .Field-message")
+    public WebElement errMsgAdditionalCitizenship2;
+
     @FindBy(how = How.CSS, using = "input[name='additionalCitizenship3']")
     public WebElement tfAdditionalCitizenship3;
 
     @FindBy(how = How.CSS, using = "input[name='additionalCitizenshipExpDate3']")
     public WebElement pickExpiryDate3;
+
+    @FindBy(how = How.CSS, using = "div:nth-of-type(4) > .Field.Field-is-invalid > .Field-control > .Field-message")
+    public WebElement errMsgAdditionalCitizenship3;
     @FindBy(how = How.CSS, using = "div:nth-of-type(5) > .DataInfo-container.row.row-range-12.start-sm > .DataInfoText-container.capitalize.col-md-6 .capitalize.fs-xs.fw-normal.primary-font")
     public WebElement tlAdditionalCitizenshipName;
 
@@ -221,16 +233,73 @@ public WebElement ddCivilStatus;
     @FindBy(how = How.CSS, using = "div:nth-of-type(14) > .Field > .Field-control > .Select > .Drop > .Drop-header.Drop-toggle.is-clickable")
     public WebElement ddSex;
 
+    @FindBy(how = How.CSS, using = "body > [data-drop-short] li:nth-of-type(3) [type]")
+    public WebElement ddVSexF;
+
+    @FindBy(how = How.CSS, using = "body > [data-drop-short] li:nth-of-type(2) [type]")
+    public WebElement ddVSexM;
+
+    @FindBy(how = How.CSS, using = ".EditEmployeeForm-content.noGutters.row.row-range-12 > div:nth-of-type(12)")
+    public WebElement outsideForm;
+
+    @FindBy(how = How.CSS, using = "div:nth-of-type(14) > .Field.Field-is-invalid > .Field-control > .Field-message")
+    public WebElement errMsgSex;
+
     @FindBy(how = How.CSS, using = "div:nth-of-type(15) > .Field > .Field-control > .Select > .Drop > .Drop-header.Drop-toggle.is-clickable")
     public WebElement ddGender;
 
+    @FindBy(how = How.CSS, using = "body > [data-drop-short] li:nth-of-type(1) .capitalize")
+    public WebElement ddGenderMale;
+
+    @FindBy(how = How.CSS, using = "body > [data-drop-short] li:nth-of-type(2) .capitalize")
+    public WebElement ddGenderFemale;
+
+    @FindBy(how = How.CSS, using = "body > [data-drop-short] li:nth-of-type(3) .capitalize")
+    public WebElement ddGenderLesbian;
+
+    @FindBy(how = How.CSS, using = "body > [data-drop-short] li:nth-of-type(4) .capitalize")
+    public WebElement ddGenderGay;
+
+    @FindBy(how = How.CSS, using = "body > [data-drop-short] li:nth-of-type(5) .capitalize")
+    public WebElement ddGenderBisexual;
+
+    @FindBy(how = How.CSS, using = "body > [data-drop-short] li:nth-of-type(6) .capitalize")
+    public WebElement ddGenderTransgender;
+
+    @FindBy(how = How.CSS, using = "body > [data-drop-short] li:nth-of-type(7) .capitalize")
+    public WebElement ddGenderQuestioning;
+
+    @FindBy(how = How.CSS, using = "div:nth-of-type(15) > .Field.Field-is-invalid > .Field-control > .Field-message")
+    public WebElement errMsgGender;
+
     @FindBy(how = How.CSS, using = "input#nationality")
     public WebElement tfNationality;
+
+    @FindBy(how = How.CSS, using = "div:nth-of-type(3) > .Field.Field-is-invalid > .Field-control > .Field-message")
+    public WebElement errMsgNationality;
     @FindBy(how = How.CSS, using = ".Callout.Callout--secondary.DataInfo > .DataInfo-container.row.row-range-12.start-sm > div:nth-of-type(1) .capitalize.fs-xs.fw-normal.primary-font")
     public WebElement tlSex;
 
     @FindBy(how = How.CSS, using = ".Callout.Callout--secondary.DataInfo > .DataInfo-container.row.row-range-12.start-sm > div:nth-of-type(2) .capitalize.fs-xs.fw-normal.primary-font")
     public WebElement tlCivilStatus;
+
+    @FindBy(how = How.CSS, using = "body > [data-drop-short] li:nth-of-type(1) .capitalize")
+    public WebElement ddCivilStatusSingle;
+
+    @FindBy(how = How.CSS, using = "body > [data-drop-short] li:nth-of-type(2) .capitalize")
+    public WebElement ddCivilStatusMarried;
+
+    @FindBy(how = How.CSS, using = "body > [data-drop-short] li:nth-of-type(3) .capitalize")
+    public WebElement ddCivilStatusDivorced;
+
+    @FindBy(how = How.CSS, using = "body > [data-drop-short] li:nth-of-type(4) .capitalize")
+    public WebElement ddCivilStatusWidowed;
+
+    @FindBy(how = How.CSS, using = "body > [data-drop-short] li:nth-of-type(5) .capitalize")
+    public WebElement ddCivilStatusSeparated;
+
+    @FindBy(how = How.CSS, using = "div:nth-of-type(13) > .Field.Field-is-invalid > .Field-control > .Field-message")
+    public WebElement errMsgCivilStatus;
 
     @FindBy(how = How.CSS, using = ".Callout.Callout--secondary.DataInfo > .DataInfo-container.row.row-range-12.start-sm > div:nth-of-type(3) .capitalize.fs-xs.fw-normal.primary-font")
     public WebElement tlNationality;
@@ -246,35 +315,23 @@ public WebElement ddCivilStatus;
 
 //<---------------------------------------------EDIT GENERAL---------------------------------------------------------------------->
 //<---------------------------------------------FIRST NAME---------------------------------------------------------------------->
-    public void inputSpaceOnlyFirstName(String space){
+    public void inputSpaceOnlyFirstName(String space) throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         tfFirstName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#firstName")));
         tfFirstName.clear();
         tfFirstName.sendKeys(space);
-        errMsgFirstName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(1) > .Field.Field-is-invalid > .Field-control > .Field-message")));
-        actualErrorMessage = errMsgFirstName.getText();
-        expectedErrorMessage = "Please enter First Name.";
-        assertEquals(actualErrorMessage, expectedErrorMessage);
     }
 
-    public void inputDotOnlyFirstName(String dot){
+    public void inputDotOnlyFirstName(String dot) throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         tfFirstName.clear();
         tfFirstName.sendKeys(dot);
-        errMsgFirstName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(1) > .Field.Field-is-invalid > .Field-control > .Field-message")));
-        actualErrorMessage = errMsgFirstName.getText();
-        expectedErrorMessage = "Please enter First Name.";
-        assertEquals(actualErrorMessage, expectedErrorMessage);
     }
 
-    public void inputDashOnlyFirstName(String dash){
+    public void inputDashOnlyFirstName(String dash) throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
-        tfFirstName.clear();
+        tfFirstName.click();
         tfFirstName.sendKeys(dash);
-        errMsgFirstName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(1) > .Field.Field-is-invalid > .Field-control > .Field-message")));
-        actualErrorMessage = errMsgFirstName.getText();
-        expectedErrorMessage = "Please enter First Name.";
-        assertEquals(actualErrorMessage, expectedErrorMessage);
     }
 
     public void inputCompoundSpaceFirstName(String compoundSpace){
@@ -306,10 +363,6 @@ public WebElement ddCivilStatus;
         WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         tfFirstName.clear();
         tfFirstName.sendKeys(blank);
-        errMsgFirstName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(1) > .Field.Field-is-invalid > .Field-control > .Field-message")));
-        actualErrorMessage = errMsgFirstName.getText();
-        expectedErrorMessage = "Please enter First Name.";
-        assertEquals(actualErrorMessage, expectedErrorMessage);
     }
 
     public void inputLessThan50FirstName(String lessThan50){
@@ -322,12 +375,23 @@ public WebElement ddCivilStatus;
         tfFirstName.sendKeys(moreThan50);
     }
     public void inputOtherCharacterFirstName(String otherCharacter){
-        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         tfFirstName.clear();
         tfFirstName.sendKeys(otherCharacter);
+    }
+
+    public void errMsgOtherCharacterFirstName(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         errMsgFirstName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(1) > .Field.Field-is-invalid > .Field-control > .Field-message")));
         actualErrorMessage = errMsgFirstName.getText();
         expectedErrorMessage = "Please use alphabetic letters, numbers, space, dash and period only";
+        assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
+
+    public void errMsgFirstName(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        errMsgFirstName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(1) > .Field.Field-is-invalid > .Field-control > .Field-message")));
+        actualErrorMessage = errMsgFirstName.getText();
+        expectedErrorMessage = "Please enter First Name.";
         assertEquals(actualErrorMessage, expectedErrorMessage);
     }
 
@@ -347,6 +411,10 @@ public WebElement ddCivilStatus;
         tfLastName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#lastName")));
         tfLastName.clear();
         tfLastName.sendKeys(space);
+    }
+
+    public void errMsgLastName(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         errMsgLastName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(2) > .Field.Field-is-invalid > .Field-control > .Field-message")));
         actualErrorMessage = errMsgLastName.getText();
         expectedErrorMessage = "Please enter Last Name.";
@@ -357,20 +425,14 @@ public WebElement ddCivilStatus;
         WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         tfLastName.clear();
         tfLastName.sendKeys(dot);
-        errMsgLastName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(2) > .Field.Field-is-invalid > .Field-control > .Field-message")));
-        actualErrorMessage = errMsgLastName.getText();
-        expectedErrorMessage = "Please enter Last Name.";
-        assertEquals(actualErrorMessage, expectedErrorMessage);
+
     }
 
     public void inputDashOnlyLastName(String dash){
         WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         tfLastName.clear();
         tfLastName.sendKeys(dash);
-        errMsgLastName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(2) > .Field.Field-is-invalid > .Field-control > .Field-message")));
-        actualErrorMessage = errMsgLastName.getText();
-        expectedErrorMessage = "Please enter Last Name.";
-        assertEquals(actualErrorMessage, expectedErrorMessage);
+
     }
 
     public void inputCompoundSpaceLastName(String compoundSpace){
@@ -402,10 +464,7 @@ public WebElement ddCivilStatus;
         WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         tfLastName.clear();
         tfLastName.sendKeys(blank);
-        errMsgLastName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(2) > .Field.Field-is-invalid > .Field-control > .Field-message")));
-        actualErrorMessage = errMsgLastName.getText();
-        expectedErrorMessage = "Please enter Last Name.";
-        assertEquals(actualErrorMessage, expectedErrorMessage);
+
     }
 
     public void inputLessThan50LastName(String lessThan50){
@@ -421,6 +480,10 @@ public WebElement ddCivilStatus;
         WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         tfLastName.clear();
         tfLastName.sendKeys(otherCharacter);
+    }
+
+    public void errMsgOtherCharacterLastName(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         errMsgLastName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(2) > .Field.Field-is-invalid > .Field-control > .Field-message")));
         actualErrorMessage = errMsgLastName.getText();
         expectedErrorMessage = "Please use alphabetic letters, numbers, space, dash and period only";
@@ -433,6 +496,10 @@ public WebElement ddCivilStatus;
         tfMiddleName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#middleName")));
         tfMiddleName.clear();
         tfMiddleName.sendKeys(space);
+    }
+
+    public void errMsgMiddleName(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         errMsgMiddleName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(3) > .Field.Field-is-invalid > .Field-control > .Field-message")));
         actualErrorMessage = errMsgMiddleName.getText();
         expectedErrorMessage = "Please enter Middle Name.";
@@ -443,20 +510,12 @@ public WebElement ddCivilStatus;
         WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         tfMiddleName.clear();
         tfMiddleName.sendKeys(dot);
-        errMsgMiddleName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(3) > .Field.Field-is-invalid > .Field-control > .Field-message")));
-        actualErrorMessage = errMsgMiddleName.getText();
-        expectedErrorMessage = "Please enter Middle Name.";
-        assertEquals(actualErrorMessage, expectedErrorMessage);
     }
 
     public void inputDashOnlyMiddleName(String dash){
         WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         tfMiddleName.clear();
         tfMiddleName.sendKeys(dash);
-        errMsgMiddleName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(3) > .Field.Field-is-invalid > .Field-control > .Field-message")));
-        actualErrorMessage = errMsgMiddleName.getText();
-        expectedErrorMessage = "Please enter Middle Name.";
-        assertEquals(actualErrorMessage, expectedErrorMessage);
     }
 
     public void inputCompoundSpaceMiddleName(String compoundSpace){
@@ -485,13 +544,8 @@ public WebElement ddCivilStatus;
     }
 
     public void inputBlankMiddleName(String blank){
-        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         tfMiddleName.clear();
         tfMiddleName.sendKeys(blank);
-        errMsgMiddleName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(3) > .Field.Field-is-invalid > .Field-control > .Field-message")));
-        actualErrorMessage = errMsgMiddleName.getText();
-        expectedErrorMessage = "Please enter Middle Name.";
-        assertEquals(actualErrorMessage, expectedErrorMessage);
     }
 
     public void inputLessThan50MiddleName(String lessThan50){
@@ -504,15 +558,17 @@ public WebElement ddCivilStatus;
         tfMiddleName.sendKeys(moreThan50);
     }
     public void inputOtherCharacterMiddleName(String otherCharacter){
-        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         tfMiddleName.clear();
         tfMiddleName.sendKeys(otherCharacter);
+    }
+
+    public void errMsgOtherCharacterMiddleName(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         errMsgMiddleName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(3) > .Field.Field-is-invalid > .Field-control > .Field-message")));
         actualErrorMessage = errMsgMiddleName.getText();
         expectedErrorMessage = "Please use alphabetic letters, numbers, space, dash and period only";
         assertEquals(actualErrorMessage, expectedErrorMessage);
     }
-
     //<----------------------------------------------------SUFFIX-------------------------------------------------------------------------------->
     public void inputBlankSuffix(String blank){
         WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
@@ -534,9 +590,11 @@ public WebElement ddCivilStatus;
         tfSuffix.sendKeys(moreThan4);
     }
     public void inputOtherCharacterSuffix(String otherCharacter){
-        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         tfSuffix.clear();
         tfSuffix.sendKeys(otherCharacter);
+    }
+    public void errMsgOtherCharacterSuffix(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         errMsgSuffix = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(4) > .Field.Field-is-invalid > .Field-control > .Field-message")));
         actualErrorMessage = errMsgSuffix.getText();
         expectedErrorMessage = "Please use alphabetic letters, numbers, space, dash and period only";
@@ -771,6 +829,252 @@ public WebElement ddCivilStatus;
         assertArrayEquals(ddStateList, ddStateArray);
     }
 
+    //<---------------------------------------------------Country-------------------------------------------------------------->
+
+    public void clickCountryDropdown(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfCountry = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".Drop.Drop--expanded  input")));
+    }
+    public void checkIfAllCountryIsPresent(){
+
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfCountry = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+
+        //Getting all values inside the State Dropdown
+       /* Select select = new Select(Driver.findElement(By.cssSelector("div#state  .Drop-header.Drop-toggle.is-clickable")));
+        List <WebElement> op = select.getOptions();
+        int size = op.size();
+        for(int i =0; i<size ; i++){
+            String options = op.get(i).getText();
+        }*/
+        //Declaring Array with Equal Size to the List
+
+        List<WebElement> op= Driver.findElements(By.cssSelector(""));
+        int size = op.size();
+        String[]ddCountryList = new String [size];
+        for(int i =0; i<size ; i++){
+            String stateValues = op.get(Integer.parseInt(ddCountryList[i])).getText();
+        }
+
+        //Expected State List
+        String[] ddCountryArray = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"};
+
+        //Comparing the retrieved list with the expected state list
+        assertArrayEquals(ddCountryArray, ddCountryList);
+    }
+
+    public void inputBlankCountry(String blank){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfCountry = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".Drop.Drop--expanded  input")));
+        tfCountry.sendKeys(blank);
+    }
+    public void verifyErrMsgForCountry(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        errMsgCountry = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='col-md-4']:nth-of-type(2) .Field-message")));
+        actualErrorMessage = errMsgState.getText();
+        expectedErrorMessage = "Please enter Country.";
+        assertEquals(expectedErrorMessage, actualErrorMessage);
+    }
+
+//<-----------------------------------------------Additional Information: Sex------------------------------------------------->
+
+    public void inputValidSex(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        ddSex = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(14) > .Field > .Field-control > .Select > .Drop > .Drop-header.Drop-toggle.is-clickable")));
+        ddSex.click();
+        ddVSexF = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("body > [data-drop-short] li:nth-of-type(3) [type]")));
+        ddVSexF.click();
+        ddVSexM = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("body > [data-drop-short] li:nth-of-type(2) [type]")));
+        ddVSexM.click();
+    }
+
+    public void inputBlankSex(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        ddSex = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(14) > .Field > .Field-control > .Select > .Drop > .Drop-header.Drop-toggle.is-clickable")));
+        ddSex.click();
+        outsideForm.click();
+    }
+
+    public void verifyErrMsgSex(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        errMsgSex = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(14) > .Field.Field-is-invalid > .Field-control > .Field-message")));
+        actualErrorMessage = errMsgSex.getText();
+        expectedErrorMessage = "Please enter your sex";
+        assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
+
+    //<-----------------------------------------------Additional Information: Gender------------------------------------------------->
+
+    public void inputValidGender(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        ddGender = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(15) > .Field > .Field-control > .Select > .Drop > .Drop-header.Drop-toggle.is-clickable")));
+        ddGender.click();
+        ddGenderMale.click();
+        ddGenderFemale.click();
+        ddGenderLesbian.click();
+        ddGenderGay.click();
+        ddGenderBisexual.click();
+        ddGenderTransgender.click();
+        ddGenderQuestioning.click();
+    }
+    public void inputBlankGender(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        ddGender = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(15) > .Field > .Field-control > .Select > .Drop > .Drop-header.Drop-toggle.is-clickable")));
+        ddGender.click();
+        outsideForm.click();
+    }
+
+    public void verifyErrMsgGender(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        errMsgGender = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(15) > .Field > .Field-control > .Select > .Drop > .Drop-header.Drop-toggle.is-clickable")));
+        actualErrorMessage = errMsgGender.getText();
+        expectedErrorMessage = "Please enter your gender";
+        assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
+
+    //<-----------------------------------------------Additional Information: Civil Status------------------------------------------------->
+
+    public void inputValidCivilStatus(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        ddCivilStatus = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(13) > .Field.Field-is-invalid > .Field-control > .Select > .Drop > .Drop-header.Drop-toggle.is-clickable")));
+        ddCivilStatus.click();
+        ddCivilStatusSingle.click();
+        ddCivilStatusMarried.click();
+        ddCivilStatusDivorced.click();
+        ddCivilStatusWidowed.click();
+        ddCivilStatusSeparated.click();
+    }
+    public void inputBlankCivilStatus(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        ddCivilStatus = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(13) > .Field.Field-is-invalid > .Field-control > .Select > .Drop > .Drop-header.Drop-toggle.is-clickable")));
+        ddCivilStatus.click();
+        outsideForm.click();
+    }
+
+    public void verifyErrMsgCivilStatus(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        errMsgCivilStatus = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(13) > .Field.Field-is-invalid > .Field-control > .Select > .Drop > .Drop-header.Drop-toggle.is-clickable")));
+        actualErrorMessage = errMsgCivilStatus.getText();
+        expectedErrorMessage = "Please enter your civil status";
+        assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
+    //<-----------------------------------------------Additional Information: Nationality------------------------------------------------->
+
+    public void inputValidNationality(String validNationality){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfNationality = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#nationality")));
+        tfNationality.sendKeys(validNationality);
+    }
+
+    public void inputBlankNationality(String blank){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfNationality = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#nationality")));
+        tfNationality.sendKeys(blank);
+    }
+    public void verifyErrMsgNationality(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        errMsgNationality = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-of-type(3) > .Field.Field-is-invalid > .Field-control > .Field-message")));
+        actualErrorMessage = errMsgNationality.getText();
+        expectedErrorMessage = "Please select Nationality.";
+    }
+    //<-----------------------------------------------Additional Information: Citizenship------------------------------------------------->
+    public void inputValidCitizenship(String validCitizenship){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfCitizenship = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#citizenship")));
+        tfCitizenship.sendKeys(validCitizenship);
+    }
+
+    public void inputBlankCitizenship(String blank){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfCitizenship = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#citizenship")));
+        tfCitizenship.sendKeys(blank);
+    }
+    public void verifyErrMsgCitizenship(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        errMsgCitizenship = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+        actualErrorMessage = errMsgCitizenship.getText();
+        expectedErrorMessage = "Please enter Citizenship.";
+    }
+
+    //<-----------------------------------------------Additional Information: Expiry Date------------------------------------------------->
+    //@TO DO: Add the necessary validations for the expiry date once the calendar picker is interactable
+    public void inputValidExpiryDate() throws InterruptedException {
+        Thread.sleep(5000);
+    }
+    //<-----------------------------------------------Additional Information: Additional Citizenship 1------------------------------------------------->
+    public void inputValidAdditionalCitizenship1(String validCitizenship){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfAdditionalCitizenship1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#citizenship")));
+        tfAdditionalCitizenship1.sendKeys(validCitizenship);
+    }
+
+    public void inputBlankAdditionalCitizenship1(String blank){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfAdditionalCitizenship1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#citizenship")));
+        tfAdditionalCitizenship1.sendKeys(blank);
+    }
+    public void verifyErrMsgAdditionalCitizenship1(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        errMsgAdditionalCitizenship1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+        actualErrorMessage = errMsgAdditionalCitizenship1.getText();
+        expectedErrorMessage = "Please enter Additional citizenship";
+    }
+
+    //<-----------------------------------------------Additional Information: Expiry Date 1------------------------------------------------->
+    //@TO DO: Add the necessary validations for the expiry date once the calendar picker is interactable
+    public void inputValidExpiryDate1() throws InterruptedException {
+        Thread.sleep(5000);
+    }
+
+    //<-----------------------------------------------Additional Information: Additional Citizenship 2------------------------------------------------->
+    public void inputValidAdditionalCitizenship2(String validCitizenship){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfAdditionalCitizenship2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#citizenship")));
+        tfAdditionalCitizenship2.sendKeys(validCitizenship);
+    }
+
+    public void inputBlankAdditionalCitizenship2(String blank){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfAdditionalCitizenship2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#citizenship")));
+        tfAdditionalCitizenship2.sendKeys(blank);
+    }
+    public void verifyErrMsgAdditionalCitizenship2(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        errMsgAdditionalCitizenship2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+        actualErrorMessage = errMsgAdditionalCitizenship2.getText();
+        expectedErrorMessage = "Please enter Additional citizenship";
+    }
+
+    //<-----------------------------------------------Additional Information: Expiry Date 2------------------------------------------------->
+    //@TO DO: Add the necessary validations for the expiry date once the calendar picker is interactable
+    public void inputValidExpiryDate2() throws InterruptedException {
+        Thread.sleep(5000);
+    }
+
+    //<-----------------------------------------------Additional Information: Additional Citizenship 3------------------------------------------------->
+    public void inputValidAdditionalCitizenship3(String validCitizenship){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfAdditionalCitizenship3 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#citizenship")));
+        tfAdditionalCitizenship3.sendKeys(validCitizenship);
+    }
+
+    public void inputBlankAdditionalCitizenship3(String blank){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfAdditionalCitizenship3 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#citizenship")));
+        tfAdditionalCitizenship3.sendKeys(blank);
+    }
+    public void verifyErrMsgAdditionalCitizenship3(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        errMsgAdditionalCitizenship3 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+        actualErrorMessage = errMsgAdditionalCitizenship3.getText();
+        expectedErrorMessage = "Please enter Additional citizenship";
+    }
+
+    //<-----------------------------------------------Additional Information: Expiry Date 2------------------------------------------------->
+    //@TO DO: Add the necessary validations for the expiry date once the calendar picker is interactable
+    public void inputValidExpiryDate3() throws InterruptedException {
+        Thread.sleep(5000);
+    }
 //Verify Name Section
     public void verifyThName(){
         WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));

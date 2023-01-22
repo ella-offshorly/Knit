@@ -16,8 +16,8 @@ import static org.junit.Assert.assertEquals;
 
 public class employeeRecordContact extends BaseUtil {
 
-    public String actualTh, actualTl, actualTlv, actualTf;
-    public String expectedTh, expectedTl, expectedTlv, expectedTf;
+    public String actualTh, actualTl, actualTlv, actualTf, actualErrorMessage;
+    public String expectedTh, expectedTl, expectedTlv, expectedTf, expectedErrorMessage;
 
 public employeeRecordContact(WebDriver driver){
     PageFactory.initElements(driver, this);
@@ -131,6 +131,94 @@ public WebElement tlSkype;
 @FindBy(how = How.CSS, using = "div:nth-of-type(5) .fs-lg.fw-bold.is-ellipsed.primary-font")
     public WebElement tlvTwitter;
 
+//<-----------------------------------------------Page Objects: Current Address---------------------------------------->
+    @FindBy(how = How.CSS, using = "input#currentHouseNumber")
+    public WebElement tfCurrentHouseNumber;
+
+    @FindBy(how = How.CSS, using = ".Field-message")
+    public WebElement errMsgCurrentHouseNumber;
+
+    @FindBy(how = How.CSS, using = "input#currentStreet")
+    public WebElement tfCurrentStreet;
+
+    @FindBy(how = How.CSS, using = "input#town")
+    public WebElement tfCurremtTown;
+
+    @FindBy(how = How.CSS, using = "input#currentCity")
+    public WebElement tfCurrentCity;
+
+    @FindBy(how = How.CSS, using = ".Callout.Callout--noPadding.Callout--primary.EditEmployeeForm > .EditEmployeeForm-section > .EditEmployeeForm-content.noGutters.row.row-range-12 > div:nth-of-type(5) > .Field > .Field-control > .Drop.Drop--expanded  input")
+    public WebElement tfCurrentCountry;
+
+    @FindBy(how = How.CSS, using = "input#currentZipCode")
+    public WebElement tfCurrentZipcode;
+
+    //<-----------------------------------------------Page Objects: Permanent Address---------------------------------------->
+    @FindBy(how = How.CSS, using = "input#permanentHouseNumber")
+    public WebElement tfPermanentHouseNumber;
+
+    @FindBy(how = How.CSS, using = "input#permanentStreet")
+    public WebElement tfPermanentStreet;
+
+    @FindBy(how = How.CSS, using = "input#permanentTown")
+    public WebElement tfPermanentTown;
+
+    @FindBy(how = How.CSS, using = "input#permanentCity")
+    public WebElement tfPermanentCity;
+
+    @FindBy(how = How.CSS, using = ".Callout.Callout--attention.Callout--noPadding.EditEmployeeForm > .EditEmployeeForm-section > .EditEmployeeForm-content.noGutters.row.row-range-12 > div:nth-of-type(5) > .Field > .Field-control > .Drop.Drop--expanded  input")
+    public WebElement tfPermanentCountry;
+
+    @FindBy(how = How.CSS, using = "input#permanentZipCode")
+    public WebElement tfPermanentZipcode;
+
+    //<-----------------------------------------------Page Objects: Phone Number---------------------------------------->
+    @FindBy(how = How.CSS, using = "input#mobile")
+    public WebElement tfMobile;
+
+    //<-----------------------------------------------Page Objects: Other Contact Numbers---------------------------------------->
+    @FindBy(how = How.CSS, using = "input#workPhone")
+    public WebElement tfWorkNumber;
+
+    @FindBy(how = How.CSS, using = "input#home")
+    public WebElement tfHomeNumber;
+
+    //<-----------------------------------------------Page Objects: Email Address---------------------------------------->
+    @FindBy(how = How.CSS, using = "input#emailWork")
+    public WebElement tfWorkEmail;
+
+    @FindBy(how = How.CSS, using = "input#emailPersonal")
+    public WebElement tfPersonalEmail;
+
+    //<-----------------------------------------------Page Objects: Social Media---------------------------------------->
+    @FindBy(how = How.CSS, using = "input#skype")
+    public WebElement tfSkype;
+
+    @FindBy(how = How.CSS, using = "input#facebook")
+    public WebElement tfFacebook;
+
+    @FindBy(how = How.CSS, using = "input#instagram")
+    public WebElement tfInstagram;
+
+    @FindBy(how = How.CSS, using = "input#linkedIn")
+    public WebElement tfLinkedIn;
+
+    @FindBy(how = How.CSS, using = "input#twitter")
+    public WebElement tfTwitter;
+
+    //<-----------------------------------------------Methods: Current Address------------------------------------------------------>
+    public void inputBlankHouseNumber(String blank) {
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfCurrentHouseNumber = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+        tfCurrentHouseNumber.sendKeys(blank);
+    }
+    public void verifyErrMsgCurrentHouseNumber(){
+        actualErrorMessage = errMsgCurrentHouseNumber.getText();
+        expectedErrorMessage = "Please enter House Number";
+        assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
+
+    //<----------------------------------------------Methods: Permanent Address--------------------------------------------------->
 //Verify Current Address Section
     public void verifyThCurrentAddress(){
         WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));

@@ -45,7 +45,43 @@ Feature: Employee Record - Contact
 #    When The user does not upload an employee photo
 #    Then There is no error telling the user that the photo is mandatory
 
- #------------------Veriying text labels are present. FE checking for the meantime since adding/editing employee info is in the BE-------------
+  Scenario Outline: To verify that an error message will appear if 'No.' is left blank
+    Given The user is in the Login Page
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit Contact Page
+    When The user has left the No. field blank "<blank>"
+    Then The user should see an error message for the No. field saying, Please enter House Number
+    When The user has inputted less than 10 characters "<lessThan10>"
+    Then The user should not see an error message
+    When The user has inputted more than 10 characters "<moreThan10>"
+    Then The typed character will no longer show in the text field.
+    When The user has inputted alphanumeric charaters "<alphaNumeric>"
+    Then The user should not see an error message
+    When The user has inputted anything other than alphanumeric, a space, a dash, or a period "<otherCharacter>" in the House Number field
+    Then The user should see an error message for the House Number field saying, Please use alphabetic letters, numbers, space, dash and period only.
+    Examples:
+      | emailAddress            | password   | blank | lessThan10 | moreThan10 | alphaNumeric | otherCharacter |
+      | testella.four@gmail.com | Welcome@08 |       | xReyGmLdd  | xReyGmLdda | xyz123       | /              |
+
+  Scenario Outline: To verify that the 'No.' field has a character limit of 10 characters
+    Given The user is in the Login Page
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit Contact Page
+    When The user has inputted less than 10 characters "<lessThan10>"
+    Then The user should see an error message for the No. field saying, Please enter House Number
+    Examples:
+      | emailAddress            | password   | less |
+      | testella.four@gmail.com | Welcome@08 |      |
+
+ #------------------Verifying text labels are present. FE checking for the meantime since adding/editing employee info is in the BE-------------
   Scenario: To verify that all fields are present once the employee data is setup in the backend thru Django.
     Given The user is in the Employee Record - Contact Page
     Then Each field is present and populated in Employee Record - Contact Page

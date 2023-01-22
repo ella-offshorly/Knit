@@ -43,6 +43,12 @@ public class NavigationStepDefinition {
 
     @Given("The user is in the Employee Record - Edit General Page")
     public void the_user_is_in_the_employee_record_edit_general_page() throws InterruptedException {
-        nav.theUserProceedsToEditEmployeeRecord();
+        nav.theUserProceedsToEditEmployeeRecordGeneralPage();
+    }
+
+
+    @Given("The user is in the Employee Record - Edit Contact Page")
+    public void theUserIsInTheEmployeeRecordEditContactPage() throws InterruptedException {
+        nav.theUserProceedsToEditEmployeeRecordContactPage();
     }
 }

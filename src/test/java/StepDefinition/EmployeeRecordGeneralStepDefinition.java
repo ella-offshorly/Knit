@@ -1,6 +1,7 @@
 package StepDefinition;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
@@ -52,22 +53,22 @@ public class EmployeeRecordGeneralStepDefinition {
 
     //<-----------------------------------------------------------------------------First Name------------------------------------------------------------------------------>
     @When("The user has inputted a {string} space only in the First Name field")
-    public void the_user_has_inputted_a_space_only_in_the_first_name_field(String space) {
+    public void the_user_has_inputted_a_space_only_in_the_first_name_field(String space) throws InterruptedException {
         erg.inputSpaceOnlyFirstName(space);
     }
 
     @Then("The user should see an error message saying Please enter First Name")
     public void the_user_should_see_an_error_message_saying_please_enter_first_name() {
-
+        //erg.errMsgFirstName(); --> BLOCKER
     }
 
     @When("The user has inputted a {string} dot only in the First Name field")
-    public void the_user_has_inputted_a_dot_only_in_the_first_name_field(String dot) {
+    public void the_user_has_inputted_a_dot_only_in_the_first_name_field(String dot) throws InterruptedException {
         erg.inputDotOnlyFirstName(dot);
     }
 
     @When("The user has inputted a {string} dash only in the First Name field")
-    public void the_user_has_inputted_a_dash_only_in_the_first_name_field(String dash) {
+    public void the_user_has_inputted_a_dash_only_in_the_first_name_field(String dash) throws InterruptedException {
         erg.inputDashOnlyFirstName(dash);
     }
 
@@ -124,8 +125,9 @@ public class EmployeeRecordGeneralStepDefinition {
         erg.inputOtherCharacterFirstName(otherCharacter);
     }
 
-    @Then("The user should see an error message saying, Please use alphabetic letters, numbers, space, dash and period only.")
-    public void the_user_should_see_an_error_message_saying_please_use_alphabetic_letters_numbers_space_dash_and_period_only() {
+    @Then("The user should see an error message for the first name field saying, Please use alphabetic letters, numbers, space, dash and period only.")
+    public void the_user_should_see_an_error_message_for_the_first_name_field_saying_please_use_alphabetic_letters_numbers_space_dash_and_period_only() {
+        erg.errMsgOtherCharacterFirstName();
     }
 
     //<-----------------------------------------------------------------------------Last Name------------------------------------------------------------------------------>
@@ -136,6 +138,7 @@ public class EmployeeRecordGeneralStepDefinition {
 
     @Then("The user should see an error message saying Please enter Last Name")
     public void theUserShouldSeeAnErrorMessageSayingPleaseEnterLastName() {
+        erg.errMsgLastName();
     }
 
     @When("The user has inputted a {string} dot only in the Last Name field")
@@ -189,7 +192,13 @@ public class EmployeeRecordGeneralStepDefinition {
     }
 
     @When("The user has inputted anything other than alphanumeric, a space, a dash, or a period {string} in the Last Name field.")
-    public void theUserHasInputtedAnythingOtherThanAlphanumericASpaceADashOrAPeriodInTheLastNameField(String arg0) {
+    public void theUserHasInputtedAnythingOtherThanAlphanumericASpaceADashOrAPeriodInTheLastNameField(String otherCharacter) {
+        erg.inputOtherCharacterLastName(otherCharacter);
+    }
+
+    @Then("The user should see an error message for the last name field saying, Please use alphabetic letters, numbers, space, dash and period only.")
+    public void theUserShouldSeeAnErrorMessageForTheLastNameFieldSayingPleaseUseAlphabeticLettersNumbersSpaceDashAndPeriodOnly() {
+        erg.errMsgOtherCharacterLastName();
     }
 
     //<-----------------------------------------------------------------------------Middle Name------------------------------------------------------------------------------>
@@ -200,6 +209,7 @@ public class EmployeeRecordGeneralStepDefinition {
 
     @Then("The user should see an error message saying Please enter Middle Name")
     public void theUserShouldSeeAnErrorMessageSayingPleaseEnterMiddleName() {
+        erg.errMsgMiddleName();
     }
 
     @When("The user has inputted a {string} dot only in the Middle Name field")
@@ -253,7 +263,13 @@ public class EmployeeRecordGeneralStepDefinition {
     }
 
     @When("The user has inputted anything other than alphanumeric, a space, a dash, or a period {string} in the Middle Name field.")
-    public void theUserHasInputtedAnythingOtherThanAlphanumericASpaceADashOrAPeriodInTheMiddleNameField(String arg0) {
+    public void theUserHasInputtedAnythingOtherThanAlphanumericASpaceADashOrAPeriodInTheMiddleNameField(String otherCharacter) {
+        erg.inputOtherCharacterMiddleName(otherCharacter);
+    }
+
+    @Then("The user should see an error message for the middle name field saying, Please use alphabetic letters, numbers, space, dash and period only.")
+    public void theUserShouldSeeAnErrorMessageForTheMiddleNameFieldSayingPleaseUseAlphabeticLettersNumbersSpaceDashAndPeriodOnly() {
+        erg.errMsgOtherCharacterMiddleName();
     }
 
 //<-----------------------------------------------------------------------------Suffix------------------------------------------------------------------------------>
@@ -277,7 +293,13 @@ public class EmployeeRecordGeneralStepDefinition {
     }
 
     @When("The user has inputted anything other than alphanumeric, a space, a dash, or a period {string} in the Suffix field.")
-    public void theUserHasInputtedAnythingOtherThanAlphanumericASpaceADashOrAPeriodInTheSuffixField(String arg0) {
+    public void theUserHasInputtedAnythingOtherThanAlphanumericASpaceADashOrAPeriodInTheSuffixField(String otherCharacter) {
+        erg.inputOtherCharacterSuffix(otherCharacter);
+    }
+
+    @Then("The user should see an error message for the suffix field saying, Please use alphabetic letters, numbers, space, dash and period only.")
+    public void theUserShouldSeeAnErrorMessageForTheSuffixFieldSayingPleaseUseAlphabeticLettersNumbersSpaceDashAndPeriodOnly() {
+        erg.errMsgOtherCharacterSuffix();
     }
     //<-----------------------------------------------------------------------------Birthday------------------------------------------------------------------------------>
     @When("The user has chosen a past date in the calendar")
@@ -458,5 +480,209 @@ public class EmployeeRecordGeneralStepDefinition {
     @Then("The user should see the complete list of options for the state dropdown.")
     public void theUserShouldSeeTheCompleteListOfOptionsForTheStateDropdown() {
         erg.checkIfAllStateIsPresent();
+    }
+
+    @When("The user has chosen US in the Country field")
+    public void theUserHasChosenUSInTheCountryField() {
+    }
+
+    //<----------------------------------------------------------------------------------Country------------------------------------------------------------------>
+    @When("The user has left the Country field blank {string}")
+    public void theUserHasLeftTheCountryFieldBlank(String blank) {
+        erg.inputBlankCountry(blank);
+    }
+    @Then("The user should see an error message saying, Please enter Country.")
+    public void theUserShouldSeeAnErrorMessageSayingPleaseEnterCountry() {
+        erg.verifyErrMsgForCountry();
+    }
+
+    @When("The user has clicked the Country field")
+    public void theUserHasClickedTheCountryField() {
+        erg.clickCountryDropdown();
+    }
+
+    @Then("The user should see the complete list of options for the country dropdown.")
+    public void theUserShouldSeeTheCompleteListOfOptionsForTheCountryDropdown() {
+        erg.checkIfAllCountryIsPresent();
+    }
+
+    //<-----------------------------------------------------Additional Information: Sex--------------------------------------------------->
+
+    @When("The user has chosen a sex in the sex field")
+    public void theUserHasChosenASexInTheSexField() {
+        erg.inputValidSex();
+    }
+    
+    @When("The user has left the sex field blank")
+    public void theUserHasLeftTheSexFieldBlank() {
+        erg.inputBlankSex();
+    }
+
+    @Then("The user should see an error message saying, Please enter your sex.")
+    public void theUserShouldSeeAnErrorMessageSayingPleaseEnterYourSex() {
+        erg.verifyErrMsgSex();
+    }
+
+    @Then("The user should not see an error message in the sex field")
+    public void theUserShouldNotSeeAnErrorMessageInTheSexField() {
+    }
+    //<-----------------------------------------------------Additional Information: Gender--------------------------------------------------->
+    @When("The user has chosen a gender in the gender field")
+    public void theUserHasChosenAGenderInTheGenderField() {
+        erg.inputValidGender();
+    }
+
+    @Then("The user should not see an error message in the gender field")
+    public void theUserShouldNotSeeAnErrorMessageInTheGenderField() {
+    }
+
+    @When("The user has left the gender field blank")
+    public void theUserHasLeftTheGenderFieldBlank() {
+        erg.inputBlankGender();
+    }
+
+    @Then("The user should see an error message saying, Please enter your gender.")
+    public void theUserShouldSeeAnErrorMessageSayingPleaseEnterYourGender() {
+        erg.verifyErrMsgGender();
+    }
+
+    //<-----------------------------------------------------Additional Information: Gender--------------------------------------------------->
+
+    @When("The user has chosen a civil status in the civil status field")
+    public void theUserHasChosenACivilStatusInTheCivilStatusField() {
+        erg.inputValidCivilStatus();
+    }
+
+    @Then("The user should not see an error message in the civil status field")
+    public void theUserShouldNotSeeAnErrorMessageInTheCivilStatusField() {
+    }
+
+    @When("The user has left the civil status field blank")
+    public void theUserHasLeftTheCivilStatusFieldBlank() {
+        erg.inputBlankCivilStatus();
+    }
+
+    @Then("The user should see an error message saying, Please enter your civil status.")
+    public void theUserShouldSeeAnErrorMessageSayingPleaseEnterYourCivilStatus() {
+        erg.verifyErrMsgCivilStatus();
+    }
+
+    //<-----------------------------------------------------Additional Information: Nationality--------------------------------------------------->
+    @When("The user has inputted a nationality {string} in the nationality field")
+    public void theUserHasInputtedANationalityInTheNationalityField(String validNationality) {
+        erg.inputValidNationality(validNationality);
+    }
+
+    @Then("The user should not see an error message in the nationality field")
+    public void theUserShouldNotSeeAnErrorMessageInTheNationalityField() {
+    }
+
+    @When("The user has left the nationality field blank {string}")
+    public void theUserHasLeftTheNationalityFieldBlank(String blank) {
+        erg.inputBlankNationality(blank);
+    }
+
+    @Then("The user should see an error message saying, Please select Nationality.")
+    public void theUserShouldSeeAnErrorMessageSayingPleaseSelectNationality() {
+        erg.verifyErrMsgNationality();
+    }
+    //<-----------------------------------------------------Additional Information: Citizenship & Expiry Date--------------------------------------------------->
+    @When("The user has inputted a citizenship {string} in the citizenship field")
+    public void theUserHasInputtedACitizenshipInTheCitizenshipField(String validCitizenship) {
+        erg.inputValidCitizenship(validCitizenship);
+    }
+
+    @Then("The user should not see an error message in the citizenship field")
+    public void theUserShouldNotSeeAnErrorMessageInTheCitizenshipField() {
+    }
+
+    @When("The user has left the citizenship field blank {string}")
+    public void theUserHasLeftTheCitizenshipFieldBlank(String blank) {
+        erg.inputBlankCitizenship(blank);
+    }
+
+    @Then("The user should see an error message saying, Please enter Citizenship.")
+    public void theUserShouldSeeAnErrorMessageSayingPleaseEnterCitizenship() {
+        erg.verifyErrMsgCitizenship();
+    }
+
+    @When("The user has inputted an accepted expiry date in the expiry date field")
+    public void theUserHasInputtedAnAcceptedExpiryDateInTheExpiryDateField() throws InterruptedException{
+        erg.inputValidExpiryDate();
+    }
+
+    @Then("The user should not see an error message in the expiry date field")
+    public void theUserShouldNotSeeAnErrorMessageInTheExpiryDateField() {
+    }
+
+    @When("The user has left the expiry date field blank")
+    public void theUserHasLeftTheExpiryDateFieldBlank() throws InterruptedException{
+        erg.inputValidExpiryDate();
+    }
+
+    //<-----------------------------------------------------Additional Information: Citizenship & Expiry Date 1--------------------------------------------------->
+    @When("The user has inputted a citizenship {string} in the citizenship field 1")
+    public void theUserHasInputtedACitizenshipInTheCitizenshipField1(String validCitizenship) {
+        erg.inputValidAdditionalCitizenship1(validCitizenship);
+    }
+
+    @Then("The user should not see an error message in the citizenship field 1")
+    public void theUserShouldNotSeeAnErrorMessageInTheCitizenshipField1() {
+    }
+
+    @When("The user has left the citizenship field 1 blank {string}")
+    public void theUserHasLeftTheCitizenshipFieldBlank1(String blank) {
+        erg.inputBlankAdditionalCitizenship1(blank);
+    }
+
+    @When("The user has inputted an accepted expiry date in the expiry date field 1")
+    public void theUserHasInputtedAnAcceptedExpiryDateInTheExpiryDateField1() throws InterruptedException{
+        erg.inputValidExpiryDate1();
+    }
+
+    @Then("The user should not see an error message in the expiry date field 1")
+    public void theUserShouldNotSeeAnErrorMessageInTheExpiryDateField1() {
+    }
+    //<-----------------------------------------------------Additional Information: Citizenship & Expiry Date 2--------------------------------------------------->
+    @When("The user has inputted a citizenship {string} in the citizenship field 2")
+    public void theUserHasInputtedACitizenshipInTheCitizenshipField2(String validCitizenship) {
+        erg.inputValidAdditionalCitizenship2(validCitizenship);
+    }
+
+    @Then("The user should not see an error message in the citizenship field 2")
+    public void theUserShouldNotSeeAnErrorMessageInTheCitizenshipField2() {
+    }
+
+    @When("The user has left the citizenship field 2 blank {string}")
+    public void theUserHasLeftTheCitizenshipFieldBlank2(String blank) {
+        erg.inputBlankAdditionalCitizenship2(blank);
+    }
+
+    @When("The user has inputted an accepted expiry date in the expiry date field 2")
+    public void theUserHasInputtedAnAcceptedExpiryDateInTheExpiryDateField2() throws InterruptedException{
+        erg.inputValidExpiryDate2();
+    }
+
+    @Then("The user should not see an error message in the expiry date field 2")
+    public void theUserShouldNotSeeAnErrorMessageInTheExpiryDateField2() {
+    }
+    //<-----------------------------------------------------Additional Information: Citizenship & Expiry Date 3--------------------------------------------------->
+    @When("The user has inputted a citizenship {string} in the citizenship field 3")
+    public void theUserHasInputtedACitizenshipInTheCitizenshipField3(String validCitizenship) {
+        erg.inputValidAdditionalCitizenship3(validCitizenship);
+    }
+
+    @Then("The user should not see an error message in the citizenship field 3")
+    public void theUserShouldNotSeeAnErrorMessageInTheCitizenshipField3() {
+    }
+
+    @When("The user has left the citizenship field 3 blank {string}")
+    public void theUserHasLeftTheCitizenshipFieldBlank3(String blank) {
+        erg.inputValidAdditionalCitizenship3(blank);
+    }
+
+    @When("The user has inputted an accepted expiry date in the expiry date field 3")
+    public void theUserHasInputtedAnAcceptedExpiryDateInTheExpiryDateField3() throws InterruptedException {
+        erg.inputValidExpiryDate3();
     }
 }

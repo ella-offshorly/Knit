@@ -73,7 +73,7 @@ Feature: Employee Record - General
     When The user has inputted a "<moreThan50>" First Name with more than 50 characters.
     Then The typed character will no longer show in the text field.
     When The user has inputted anything other than alphanumeric, a space, a dash, or a period "<otherCharacter>" in the First Name field.
-    Then The user should see an error message saying, Please use alphabetic letters, numbers, space, dash and period only.
+    Then The user should see an error message for the first name field saying, Please use alphabetic letters, numbers, space, dash and period only.
     Examples:
       | emailAddress            | password   | space | dot | dash | compoundSpace | compoundDot | compoundDash | alphaNumeric | numeric | blank | lessThan50                                                                                         | moreThan50                                           | otherCharacter |
       | testella.four@gmail.com | Welcome@08 |       | .   | -    | Test Ella     | Test.Ella   | Test-Ella    | TestElla123  | 123     |       | zYVRwt4xwcwpRbbPZPBvAqbP3WHKeZIWG9PZ0IuziE5EWpRjfzYVRwt4xwcwpRbbPZPBvAqbP3WHKeZIWG9PZ0IuziE5EWpRjf | zYVRwt4xwcwpRbbPZPBvAqbP3WHKeZIWG9PZ0IuziE5EWpRjfu52 | /              |
@@ -109,7 +109,7 @@ Feature: Employee Record - General
     When The user has inputted a "<moreThan50>" Last Name with more than 50 characters.
     Then The typed character will no longer show in the text field.
     When The user has inputted anything other than alphanumeric, a space, a dash, or a period "<otherCharacter>" in the Last Name field.
-    Then The user should see an error message saying, Please use alphabetic letters, numbers, space, dash and period only.
+    Then The user should see an error message for the last name field saying, Please use alphabetic letters, numbers, space, dash and period only.
     Examples:
       | emailAddress            | password   | space | dot | dash | compoundSpace | compoundDot | compoundDash | alphaNumeric | numeric | blank | lessThan50                                                                                         | moreThan50                                           | otherCharacter |
       | testella.four@gmail.com | Welcome@08 |       | .   | -    | Test Ella     | Test.Ella   | Test-Ella    | TestElla123  | 123     |       | zYVRwt4xwcwpRbbPZPBvAqbP3WHKeZIWG9PZ0IuziE5EWpRjfzYVRwt4xwcwpRbbPZPBvAqbP3WHKeZIWG9PZ0IuziE5EWpRjf | zYVRwt4xwcwpRbbPZPBvAqbP3WHKeZIWG9PZ0IuziE5EWpRjfu52 | /              |
@@ -145,7 +145,7 @@ Feature: Employee Record - General
     When The user has inputted a "<moreThan50>" Middle Name with more than 50 characters.
     Then The typed character will no longer show in the text field.
     When The user has inputted anything other than alphanumeric, a space, a dash, or a period "<otherCharacter>" in the Middle Name field.
-    Then The user should see an error message saying, Please use alphabetic letters, numbers, space, dash and period only.
+    Then The user should see an error message for the middle name field saying, Please use alphabetic letters, numbers, space, dash and period only.
     Examples:
       | emailAddress            | password   | space | dot | dash | compoundSpace | compoundDot | compoundDash | alphaNumeric | numeric | blank | lessThan50                                                                                         | moreThan50                                           | otherCharacter |
       | testella.four@gmail.com | Welcome@08 |       | .   | -    | Test Ella     | Test.Ella   | Test-Ella    | TestElla123  | 123     |       | zYVRwt4xwcwpRbbPZPBvAqbP3WHKeZIWG9PZ0IuziE5EWpRjfzYVRwt4xwcwpRbbPZPBvAqbP3WHKeZIWG9PZ0IuziE5EWpRjf | zYVRwt4xwcwpRbbPZPBvAqbP3WHKeZIWG9PZ0IuziE5EWpRjfu52 | /              |
@@ -165,10 +165,10 @@ Feature: Employee Record - General
     When The user has inputted a "<moreThan4>" Suffix with more than 4 characters.
     Then The typed character will no longer show in the text field.
     When The user has inputted anything other than alphanumeric, a space, a dash, or a period "<otherCharacter>" in the Suffix field.
-    Then The user should see an error message saying, Please use alphabetic letters, numbers, space, dash and period only.
+    Then The user should see an error message for the suffix field saying, Please use alphabetic letters, numbers, space, dash and period only.
     Examples:
-      | emailAddress            | password   | lessThan4 | moreThan4 | otherCharacter |
-      | testella.four@gmail.com | Welcome@08 | xyz       | asdfg     | /              |
+      | emailAddress            | password   | blank | lessThan4 | moreThan4 | otherCharacter |
+      | testella.four@gmail.com | Welcome@08 |       | xyz       | asdfg     | /              |
 
 #  Scenario Outline: To verify that the user has manually inputted an accepted birthdate. --> BLOCKED
 #    Given The user is in the Login Page
@@ -341,9 +341,219 @@ Feature: Employee Record - General
     Then The State field should be present
     Then The user should see the complete list of options for the state dropdown.
     Examples:
-      | emailAddress            | password   |country|
-      | testella.four@gmail.com | Welcome@08 |United |
+      | emailAddress            | password   | country |
+      | testella.four@gmail.com | Welcome@08 | United  |
 
+  Scenario Outline:   To verify that the chosen country by the user is accepted.
+    Given The user is in the Login Page
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has left the Country field blank "<blank>"
+    Then The user should see an error message saying, Please enter Country.
+    Examples:
+      | emailAddress            | password   | blank |
+      | testella.four@gmail.com | Welcome@08 |       |
+
+  Scenario Outline:   To verify that the list of options for the country dropdown is complete.
+    Given The user is in the Login Page
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has clicked the Country field
+    Then The user should see the complete list of options for the country dropdown.
+    Examples:
+      | emailAddress            | password   |
+      | testella.four@gmail.com | Welcome@08 |
+
+  Scenario Outline:   To verify that the user has entered an accepted sex
+    Given The user is in the Login Page
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has chosen a sex in the sex field
+    Then The user should not see an error message in the sex field
+    When The user has left the sex field blank
+    Then The user should see an error message saying, Please enter your sex.
+    Examples:
+      | emailAddress            | password   |
+      | testella.four@gmail.com | Welcome@08 |
+
+  Scenario Outline:   To verify that the user has entered an accepted gender
+    Given The user is in the Login Page
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has chosen a gender in the gender field
+    Then The user should not see an error message in the gender field
+    When The user has left the gender field blank
+    Then The user should see an error message saying, Please enter your gender.
+    Examples:
+      | emailAddress            | password   |
+      | testella.four@gmail.com | Welcome@08 |
+
+  Scenario Outline:   To verify that the user has entered an accepted civil status
+    Given The user is in the Login Page
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has chosen a civil status in the civil status field
+    Then The user should not see an error message in the civil status field
+    When The user has left the civil status field blank
+    Then The user should see an error message saying, Please enter your civil status.
+    Examples:
+      | emailAddress            | password   |
+      | testella.four@gmail.com | Welcome@08 |
+
+  Scenario Outline:   To verify that the user has entered an accepted nationality.
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has inputted a nationality "<validNationality>" in the nationality field
+    Then The user should not see an error message in the nationality field
+    When The user has left the nationality field blank "<blank>"
+    Then The user should see an error message saying, Please select Nationality.
+    Examples:
+      | emailAddress            | password   | validNationality | blank |
+      | testella.four@gmail.com | Welcome@08 | Filipino         |       |
+
+  Scenario Outline:   To verify that the user has entered an accepted citizenship.
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has inputted a citizenship "<validCitizenship>" in the citizenship field
+    Then The user should not see an error message in the citizenship field
+    When The user has left the citizenship field blank "<blank>"
+    Then The user should see an error message saying, Please enter Citizenship.
+    Examples:
+      | emailAddress            | password   | validCitizenship | blank |
+      | testella.four@gmail.com | Welcome@08 | Filipino         |       |
+
+  Scenario Outline:   To verify that the user has entered an accepted expiry date.
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has inputted an accepted expiry date in the expiry date field
+    Then The user should not see an error message in the expiry date field
+    When The user has left the expiry date field blank
+    Then The user should not see an error message in the expiry date field
+    Examples:
+      | emailAddress            | password   |
+      | testella.four@gmail.com | Welcome@08 |
+
+  Scenario Outline:   To verify that the user has entered an accepted additional citizenship 1.
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has inputted a citizenship "<validCitizenship>" in the citizenship field 1
+    Then The user should not see an error message in the citizenship field 1
+    When The user has left the citizenship field 1 blank "<blank>"
+    Then The user should see an error message saying, Please enter Citizenship.
+    Examples:
+      | emailAddress            | password   | validCitizenship | blank |
+      | testella.four@gmail.com | Welcome@08 | Filipino          |       |
+
+  Scenario Outline:   To verify that the user has entered an accepted expiry date 1.
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has inputted an accepted expiry date in the expiry date field 1
+    Then The user should not see an error message in the expiry date field 1
+    When The user has left the expiry date field blank
+    Then The user should not see an error message in the expiry date field 1
+    Examples:
+      | emailAddress            | password   |
+      | testella.four@gmail.com | Welcome@08 |
+
+  Scenario Outline:   To verify that the user has entered an accepted additional citizenship 2.
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has inputted a citizenship "<validCitizenship>" in the citizenship field 2
+    Then The user should not see an error message in the citizenship field 2
+    When The user has left the citizenship field 2 blank "<blank>"
+    Then The user should see an error message saying, Please enter Citizenship.
+    Examples:
+      | emailAddress            | password   | validCitizenship | blank |
+      | testella.four@gmail.com | Welcome@08 | Filipino          |       |
+
+  Scenario Outline:   To verify that the user has entered an accepted expiry date 2.
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has inputted an accepted expiry date in the expiry date field 2
+    Then The user should not see an error message in the expiry date field 2
+    When The user has left the expiry date field blank
+    Then The user should not see an error message in the expiry date field 2
+    Examples:
+      | emailAddress            | password   |
+      | testella.four@gmail.com | Welcome@08 |
+
+  Scenario Outline:   To verify that the user has entered an accepted additional citizenship 3.
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has inputted a citizenship "<validCitizenship>" in the citizenship field 3
+    Then The user should not see an error message in the citizenship field 3
+    When The user has left the citizenship field 3 blank "<blank>"
+    Then The user should see an error message saying, Please enter Citizenship.
+    Examples:
+      | emailAddress            | password   | validCitizenship | blank |
+      | testella.four@gmail.com | Welcome@08 | Filipino          |       |
+
+  Scenario Outline:   To verify that the user has entered an accepted expiry date 3.
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has inputted an accepted expiry date in the expiry date field 3
+    Then The user should not see an error message in the expiry date field 3
+    When The user has left the expiry date field blank
+    Then The user should not see an error message in the expiry date field 3
+    Examples:
+      | emailAddress            | password   |
+      | testella.four@gmail.com | Welcome@08 |
 
 #------------------Verifying text labels are present. FE checking for the meantime since adding/editing employee info is in the BE-------------
   Scenario: To verify that all fields are present once the employee data is setup in the backend thru Django.

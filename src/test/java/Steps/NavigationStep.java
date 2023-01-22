@@ -48,7 +48,7 @@ public class NavigationStep extends BaseUtil{
         Driver.findElement(By.cssSelector("li:nth-of-type(9) > .LeftNav-secondary > li:nth-of-type(3) > .LeftNav-link > .LeftNav-text")).click();
     }
 
-    public void theUserProceedsToEditEmployeeRecord() throws InterruptedException {
+    public void theUserProceedsToEditEmployeeRecordGeneralPage() throws InterruptedException {
         theUserProceedsToTheEmployeeRecordGeneralPage();
         WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
         WebElement editEmployeeRecordIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".ActionButton.Btn.Btn--success.capitalize")));
@@ -58,6 +58,13 @@ public class NavigationStep extends BaseUtil{
         Driver.findElement(By.cssSelector("span[title='HR Hub icon']")).click();
         Driver.findElement(By.cssSelector("li:nth-of-type(9) > .LeftNav-secondary > li:nth-of-type(3) > .LeftNav-link > .LeftNav-text")).click();
         Driver.findElement(By.cssSelector(".Tab.Tab--sharp > .Tab-menu > li:nth-of-type(2) > .Tab-link")).click();
+    }
+
+    public void theUserProceedsToEditEmployeeRecordContactPage() throws InterruptedException {
+        theUserProceedsToTheEmployeeRecordGeneralPage();
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        WebElement editEmployeeRecordContact = wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Contact")));
+        editEmployeeRecordContact.click();
     }
 
     public void theUserProceedsToTheEmployeeRecordEducationPage() {
