@@ -1,20 +1,21 @@
 package StepDefinition;
 
+import Base.BaseUtil;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.hrhub.employeeRecordGeneral.employeeRecordGeneral;
 
 import java.time.Duration;
 
-import static Base.BaseUtil.Driver;
 import static org.junit.Assert.assertEquals;
 
-public class EmployeeRecordGeneralStepDefinition {
+public class EmployeeRecordGeneralStepDefinition extends BaseUtil {
 
     employeeRecordGeneral erg = new employeeRecordGeneral(Driver);
 

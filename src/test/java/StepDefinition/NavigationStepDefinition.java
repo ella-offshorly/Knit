@@ -51,4 +51,9 @@ public class NavigationStepDefinition {
     public void theUserIsInTheEmployeeRecordEditContactPage() throws InterruptedException {
         nav.theUserProceedsToEditEmployeeRecordContactPage();
     }
+
+    @Given("The user is in the HR Hub - Dashboard")
+    public void theUserIsInTheHRHubDashboard() {
+        nav.theUserProceedsToTheHrHubDashboardPage();
+    }
 }

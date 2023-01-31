@@ -149,6 +149,7 @@ public class signUp extends BaseUtil{
                 + currentDate.getSeconds();
 
         tfPassword.sendKeys((CharSequence) passWord+datetime);
+        System.out.println("Password: " + passWord+datetime);
     }
 
     public void ClickCbTermsAndPolicy(){

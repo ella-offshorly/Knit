@@ -141,8 +141,11 @@ public WebElement tlSkype;
     @FindBy(how = How.CSS, using = "input#currentStreet")
     public WebElement tfCurrentStreet;
 
+    @FindBy(how = How.CSS, using = "")
+    public WebElement errMsgCurrentStreet;
+
     @FindBy(how = How.CSS, using = "input#town")
-    public WebElement tfCurremtTown;
+    public WebElement tfCurrentTown;
 
     @FindBy(how = How.CSS, using = "input#currentCity")
     public WebElement tfCurrentCity;
@@ -215,6 +218,78 @@ public WebElement tlSkype;
     public void verifyErrMsgCurrentHouseNumber(){
         actualErrorMessage = errMsgCurrentHouseNumber.getText();
         expectedErrorMessage = "Please enter House Number";
+        assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
+
+    public void inputLessThan10HouseNumber(String lessThan10){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfCurrentHouseNumber = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#currentHouseNumber")));
+        tfCurrentHouseNumber.sendKeys(lessThan10);
+    }
+
+    public void inputMoreThan10HouseNumber(String moreThan10){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfCurrentHouseNumber = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#currentHouseNumber")));
+        tfCurrentHouseNumber.sendKeys(moreThan10);
+    }
+
+    public void inputAlphaNumericHouseNumber(String alphaNumeric){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfCurrentHouseNumber = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#currentHouseNumber")));
+        tfCurrentHouseNumber.sendKeys(alphaNumeric);
+    }
+
+    public void inputOtherCharacterHouseNumber(String otherCharacter){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfCurrentHouseNumber = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#currentHouseNumber")));
+        tfCurrentHouseNumber.sendKeys(otherCharacter);
+    }
+
+    public void verifyErrMsgHouseNumber(){
+        actualErrorMessage = errMsgCurrentHouseNumber.getText();
+        expectedErrorMessage = "Please use alphabetic letters, numbers, space, dash and period only.";
+        assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
+
+    //
+    public void inputBlankStreet(String blank) {
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfCurrentStreet = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+        tfCurrentStreet.sendKeys(blank);
+    }
+    public void verifyErrMsgCurrentStreet(){
+        actualErrorMessage = errMsgCurrentHouseNumber.getText();
+        expectedErrorMessage = "Please enter Street Name";
+        assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
+
+    public void inputLessThan100Street(String lessThan100){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfCurrentStreet = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+        tfCurrentStreet.sendKeys(lessThan100);
+    }
+
+    public void inputMoreThan100Street(String moreThan100){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfCurrentStreet = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+        tfCurrentStreet.sendKeys(moreThan100);
+    }
+
+    public void inputAlphaNumericStreet(String alphaNumeric){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfCurrentStreet = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+        tfCurrentStreet.sendKeys(alphaNumeric);
+    }
+
+    public void inputOtherCharacterStreet(String otherCharacter){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5000));
+        tfCurrentStreet = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+        tfCurrentStreet.sendKeys(otherCharacter);
+    }
+
+    public void verifyErrMsgStreet(){
+        actualErrorMessage = errMsgCurrentStreet.getText();
+        expectedErrorMessage = "Please use alphabetic letters, numbers, space, dash and period only.";
         assertEquals(actualErrorMessage, expectedErrorMessage);
     }
 

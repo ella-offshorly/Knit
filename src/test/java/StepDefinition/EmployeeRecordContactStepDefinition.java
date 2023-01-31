@@ -44,4 +44,29 @@ public class EmployeeRecordContactStepDefinition {
     public void theUserShouldSeeAnErrorMessageForTheNoFieldSayingPleaseEnterHouseNumber() {
         erc.verifyErrMsgCurrentHouseNumber();
     }
+
+    @When("The user has inputted less than 10 characters {string}")
+    public void theUserHasInputtedLessThanCharacters(String lessThan10) {
+        erc.inputLessThan10HouseNumber(lessThan10);
+    }
+
+    @When("The user has inputted more than 10 characters {string}")
+    public void theUserHasInputtedMoreThanCharacters(String moreThan10) {
+        erc.inputMoreThan10HouseNumber(moreThan10);
+    }
+
+    @When("The user has inputted alphanumeric characters {string}")
+    public void theUserHasInputtedAlphanumericCharacters(String alphaNumeric) {
+        erc.inputAlphaNumericHouseNumber(alphaNumeric);
+    }
+
+    @When("The user has inputted anything other than alphanumeric, a space, a dash, or a period {string} in the House Number field")
+    public void theUserHasInputtedAnythingOtherThanAlphanumericASpaceADashOrAPeriodInTheHouseNumberField(String otherCharacter) {
+        erc.inputOtherCharacterHouseNumber(otherCharacter);
+    }
+
+    @Then("The user should see an error message for the House Number field saying, Please use alphabetic letters, numbers, space, dash and period only.")
+    public void theUserShouldSeeAnErrorMessageForTheHouseNumberFieldSayingPleaseUseAlphabeticLettersNumbersSpaceDashAndPeriodOnly() {
+        erc.verifyErrMsgHouseNumber();
+    }
 }

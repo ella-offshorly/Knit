@@ -465,6 +465,96 @@ Feature: Employee Record - General
       | emailAddress            | password   |
       | testella.four@gmail.com | Welcome@08 |
 
+  Scenario Outline:   To verify that the user has entered an accepted additional citizenship 1.
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has inputted a citizenship "<validCitizenship>" in the citizenship field 1
+    Then The user should not see an error message in the citizenship field 1
+    When The user has left the citizenship field 1 blank "<blank>"
+    Then The user should see an error message saying, Please enter Citizenship.
+    Examples:
+      | emailAddress            | password   | validCitizenship | blank |
+      | testella.four@gmail.com | Welcome@08 | Filipino          |       |
+
+  Scenario Outline:   To verify that the user has entered an accepted expiry date 1.
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has inputted an accepted expiry date in the expiry date field 1
+    Then The user should not see an error message in the expiry date field 1
+    When The user has left the expiry date field blank
+    Then The user should not see an error message in the expiry date field 1
+    Examples:
+      | emailAddress            | password   |
+      | testella.four@gmail.com | Welcome@08 |
+
+  Scenario Outline:   To verify that the user has entered an accepted additional citizenship 2.
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has inputted a citizenship "<validCitizenship>" in the citizenship field 2
+    Then The user should not see an error message in the citizenship field 2
+    When The user has left the citizenship field 2 blank "<blank>"
+    Then The user should see an error message saying, Please enter Citizenship.
+    Examples:
+      | emailAddress            | password   | validCitizenship | blank |
+      | testella.four@gmail.com | Welcome@08 | Filipino          |       |
+
+  Scenario Outline:   To verify that the user has entered an accepted expiry date 2.
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has inputted an accepted expiry date in the expiry date field 2
+    Then The user should not see an error message in the expiry date field 2
+    When The user has left the expiry date field blank
+    Then The user should not see an error message in the expiry date field 2
+    Examples:
+      | emailAddress            | password   |
+      | testella.four@gmail.com | Welcome@08 |
+
+  Scenario Outline:   To verify that the user has entered an accepted additional citizenship 3.
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has inputted a citizenship "<validCitizenship>" in the citizenship field 3
+    Then The user should not see an error message in the citizenship field 3
+    When The user has left the citizenship field 3 blank "<blank>"
+    Then The user should see an error message saying, Please enter Citizenship.
+    Examples:
+      | emailAddress            | password   | validCitizenship | blank |
+      | testella.four@gmail.com | Welcome@08 | Filipino          |       |
+
+  Scenario Outline:   To verify that the user has entered an accepted expiry date 3.
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the Employee Record - Edit General Page
+    When The user has inputted an accepted expiry date in the expiry date field 3
+    Then The user should not see an error message in the expiry date field 3
+    When The user has left the expiry date field blank
+    Then The user should not see an error message in the expiry date field 3
+    Examples:
+      | emailAddress            | password   |
+      | testella.four@gmail.com | Welcome@08 |
+
 #------------------Verifying text labels are present. FE checking for the meantime since adding/editing employee info is in the BE-------------
   Scenario: To verify that all fields are present once the employee data is setup in the backend thru Django.
     Given The user is in the Employee Record - General Page

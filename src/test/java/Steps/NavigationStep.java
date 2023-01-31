@@ -90,4 +90,9 @@ public class NavigationStep extends BaseUtil{
         Driver.findElement(By.cssSelector("li:nth-of-type(9) > .LeftNav-secondary > li:nth-of-type(3) > .LeftNav-link > .LeftNav-text")).click();
         Driver.findElement(By.cssSelector("li:nth-of-type(6) > .Tab-link > .mediaObject")).click();
     }
+
+    //<----------------------------------------------------HR Hub: Logging Time----------------------------------------------------------->
+    public void theUserProceedsToTheHrHubDashboardPage(){
+        Driver.findElement(By.cssSelector("span[title='HR Hub icon']")).click();
+    }
 }
