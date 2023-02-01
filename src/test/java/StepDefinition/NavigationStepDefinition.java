@@ -56,4 +56,9 @@ public class NavigationStepDefinition {
     public void theUserIsInTheHRHubDashboard() {
         nav.theUserProceedsToTheHrHubDashboardPage();
     }
+
+    @Given("The user is in My Attendance Page")
+    public void theUserIsInMyAttendancePage() {
+        nav.theUserProceedsToMyAttendancePage();
+    }
 }

@@ -95,4 +95,8 @@ public class NavigationStep extends BaseUtil{
     public void theUserProceedsToTheHrHubDashboardPage(){
         Driver.findElement(By.cssSelector("span[title='HR Hub icon']")).click();
     }
+
+    public void theUserProceedsToMyAttendancePage(){
+        Driver.findElement(By.cssSelector("li:nth-of-type(4) .middle-sm .capitalize")).click();
+    }
 }

@@ -82,6 +82,36 @@ Feature: HR Hub - Logging Time
       | emailAddress                            | password              |
       | testKnit1-2-123-18-25-34@mailinator.com | knit@1-2-123-18-25-38 |
 
+  #Prerequisite: Time in has been clicked for the day, Time Out has not yet been clicked, Lunch break Start and End is done.
+  Scenario Outline: To verify that expected Lunch Break Duration is equal to actual Lunch Break Duration
+    Given The user is in the Login Page
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the HR Hub - Dashboard
+    Then The expected Lunch Break Duration is equal to the actual Lunch Break Duration
+    Examples:
+      | emailAddress                            | password              |
+      | testKnit1-2-123-18-25-34@mailinator.com | knit@1-2-123-18-25-38 |
+
+  #@TO DO: Scenario for the progress bar of Lunch Break --> Not yet available
+
+  #<---------------------------------------------------------Verifying Attendance Table------------------------------------------------------------->
+  Scenario Outline: To verify that expected Lunch Break Duration is equal to actual Lunch Break Duration
+    Given The user is in the Login Page
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in My Attendance Page
+
+    Examples:
+      | emailAddress                            | password              |
+      | testKnit1-2-123-18-25-34@mailinator.com | knit@1-2-123-18-25-38 |
+
 ##Prerequisite: User has a fixed shift, user has clicked "Time In", the current time has reached the scheduled Time Out
 #  Scenario: To verify that button labels and fields will change once "Time Out" is clicked --> FOR REVIEW
 #    Given The user is in the HR Hub - Dashboard
