@@ -257,19 +257,19 @@ Feature: Employee Record - General
       | emailAddress            | password   | space | dot | dash | alphaNumeric | numeric | blank | lessThan60 | moreThan60                                                    |
       | testella.four@gmail.com | Welcome@08 |       | .   | -    | TestCity123  | 123     |       | Lipa       | 2ME8Z2Rsc8bCJhlERjHqd1EnOvgN3lxxMmSqgUJ9emtjH5RiH5YqbfBgmI6wR |
 
-  Scenario Outline: To verify that the country is automatically pre-filled based on the city entered.
-    Given The user is in the Login Page
-    When The user has entered the email address "<emailAddress>" for login
-    And The user has clicked on Next button for login
-    And The user has entered the password "<password>" for login
-    And The user has clicked Submit button
-    Then The user will proceed to Knit Dashboard after login
-    Given The user is in the Employee Record - Edit General Page
-    When The user has inputted a "<valid>" valid City
-    Then The country is automatically pre-filled based on the city entered.
-    Examples:
-      | emailAddress            | password   | valid |
-      | testella.four@gmail.com | Welcome@08 | Lipa  |
+#  Scenario Outline: To verify that the country is automatically pre-filled based on the city entered. --> BLOCKED: Milestone 2
+#    Given The user is in the Login Page
+#    When The user has entered the email address "<emailAddress>" for login
+#    And The user has clicked on Next button for login
+#    And The user has entered the password "<password>" for login
+#    And The user has clicked Submit button
+#    Then The user will proceed to Knit Dashboard after login
+#    Given The user is in the Employee Record - Edit General Page
+#    When The user has inputted a "<valid>" valid City
+#    Then The country is automatically pre-filled based on the city entered.
+#    Examples:
+#      | emailAddress            | password   | valid |
+#      | testella.four@gmail.com | Welcome@08 | Lipa  |
 
   Scenario Outline: To verify that the user has inputted an accepted town.
     Given The user is in the Login Page
@@ -299,19 +299,19 @@ Feature: Employee Record - General
       | emailAddress            | password   | space | dot | dash | alphaNumeric | numeric | blank | lessThan60 | moreThan60                                                    |
       | testella.four@gmail.com | Welcome@08 |       | .   | -    | TestCity123  | 123     |       | Lipa       | 2ME8Z2Rsc8bCJhlERjHqd1EnOvgN3lxxMmSqgUJ9emtjH5RiH5YqbfBgmI6wR |
 
-  Scenario Outline: To verify that the country is automatically pre-filled based on the town entered.
-    Given The user is in the Login Page
-    When The user has entered the email address "<emailAddress>" for login
-    And The user has clicked on Next button for login
-    And The user has entered the password "<password>" for login
-    And The user has clicked Submit button
-    Then The user will proceed to Knit Dashboard after login
-    Given The user is in the Employee Record - Edit General Page
-    When The user has inputted a "<valid>" valid Town
-    Then The country is automatically pre-filled based on the town entered.
-    Examples:
-      | emailAddress            | password   | valid |
-      | testella.four@gmail.com | Welcome@08 | Tambo |
+#  Scenario Outline: To verify that the country is automatically pre-filled based on the town entered. --> BLOCKED: Milestone 2
+#    Given The user is in the Login Page
+#    When The user has entered the email address "<emailAddress>" for login
+#    And The user has clicked on Next button for login
+#    And The user has entered the password "<password>" for login
+#    And The user has clicked Submit button
+#    Then The user will proceed to Knit Dashboard after login
+#    Given The user is in the Employee Record - Edit General Page
+#    When The user has inputted a "<valid>" valid Town
+#    Then The country is automatically pre-filled based on the town entered.
+#    Examples:
+#      | emailAddress            | password   | valid |
+#      | testella.four@gmail.com | Welcome@08 | Tambo |
 
   Scenario Outline: To verify that the state is required if the country is US.
     Given The user is in the Login Page
