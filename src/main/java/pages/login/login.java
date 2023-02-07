@@ -239,7 +239,7 @@ public class login extends BaseUtil{
         actualCurrentURL = Driver.getCurrentUrl();
         System.out.println("Current URL: " + actualCurrentURL);
         //TO DO: Refactor this to a page to list all the expected URLs
-        expectedURL = "https://play.idealforliving.com/"; //Confirm if the redirection is at / or /dashboard
+        expectedURL = "https://play.idealforliving.com/hr-hub/employees/me/dashboard"; //Confirm if the redirection is at / or /dashboard
         assertEquals(expectedURL, actualCurrentURL);
     }
 

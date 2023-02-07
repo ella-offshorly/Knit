@@ -72,7 +72,7 @@ public class signUp extends BaseUtil{
     @FindBy(how = How.CSS, using = ".ng-scope > td:nth-of-type(3)")
     public WebElement ltEmailSubject;
 
-    @FindBy(how = How.LINK_TEXT, using = "Click here to verify your email address.")
+    @FindBy(how = How.LINK_TEXT, using = "a[target='_other']")
     public WebElement ltVerifyEmail;
 
     //<-------------------------------------PAGE OBJECTS: Sign Up Via Google------------------------------------>
@@ -205,8 +205,9 @@ public class signUp extends BaseUtil{
         //Switching to iframe 0
         Driver.switchTo().frame(0);
 
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(60));
+        ltVerifyEmail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[target='_other']")));
         ltVerifyEmail.click();
-        Thread.sleep(3000);
 
         //Switch back to main web page
         Driver.switchTo().defaultContent();
