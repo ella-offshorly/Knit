@@ -30,8 +30,9 @@ public class loggingTime extends BaseUtil{
     }
 
     String actualTimeIn, actualBreakTimeIn, actualBreakTimeOut, actualCTA, actualTimeOut, actualTlv;
-    String expectedTimeIn, expectedBreakTimeIn, expectedBreakTimeOut,expectedStartCurrentTime, expectedEndCurrentTime, expectedCTA, expectedTimeOut, expectedCurrentDay, expectedCurrentDate, expectedTlv;
-
+    String expectedTimeIn, expectedBreakTimeIn, expectedBreakTimeOut,expectedStartCurrentTime, expectedEndCurrentTime, expectedCTA, expectedTimeOut, expectedCurrentDay, expectedCurrentDate, expectedTlv, expectedLate, expectedExcess;
+    String shiftTimeIn = "23:00PM";
+    String shiftTimeOut = "08:00AM";
     //<----------------------------------------PAGE OBJECTS: Time In & Time Out-------------------------------------------->
     @FindBy(how = How.CSS, using = "div:nth-of-type(1) > .fs.fw-bold.primary-font.text-light")
     public WebElement timeIn;
@@ -84,6 +85,13 @@ public class loggingTime extends BaseUtil{
 
     @FindBy(how = How.CSS, using = "tr:nth-of-type(1) > .cell-formattedLate > .fs.fw-normal.primary-font")
     public WebElement tlvLate;
+
+    @FindBy(how = How.CSS, using = ".cell-formattedExcess > .fs.fw-normal.primary-font")
+    public WebElement tlvExcess;
+
+    @FindBy(how = How.CSS, using = ".cell-formattedDeficit > .fs.fw-normal.primary-font")
+    public WebElement tlvDeficit;
+
 
     //<-------------------------------------------------METHOD: Time In and Time Out---------------------------------------------------->
     public void getStartCurrentTime(){
@@ -314,5 +322,68 @@ public class loggingTime extends BaseUtil{
         System.out.println("Expected Time Out: " + expectedTimeOut);
         expectedTlv = expectedTimeOut;
         assertTrue(actualTlv.contains(expectedTlv));
+    }
+
+    public void verifyDisplayedLate(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(60));
+        tlvLate = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tr:nth-of-type(1) > .cell-formattedLate > .fs.fw-normal.primary-font")));
+        actualTlv = tlvLate.getText();
+        System.out.println("Actual Late: " + actualTlv);
+
+        //Converting Time String Value to Time variable
+        LocalTime timeVarShiftTimeIn = LocalTime.parse(shiftTimeIn);
+        LocalTime timeVarActualTimeIn = LocalTime.parse(actualTimeIn);
+        LocalTime timeVarActualLate = LocalTime.parse(actualTlv);
+
+        //Computing the Expected Late
+        final Duration expectedLate;
+        expectedLate= Duration.between(timeVarShiftTimeIn, timeVarActualTimeIn).abs();
+
+        //Comparing actual and expected late values
+        assertEquals(expectedLate, timeVarActualLate);
+        System.out.println("Expected Late: " + expectedLate);
+
+    }
+
+    public void verifyDisplayedExcess(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(60));
+        tlvExcess = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".cell-formattedExcess > .fs.fw-normal.primary-font")));
+        actualTlv = tlvExcess.getText();
+        System.out.println("Actual Excess: " + actualTlv);
+
+        //Converting Time String Value to Time variable
+        LocalTime timeVarShiftTimeOut = LocalTime.parse(shiftTimeOut);
+        LocalTime timeVarActualTimeOut = LocalTime.parse(actualTimeOut);
+        LocalTime timeVarActualExcess = LocalTime.parse(actualTlv);
+
+        //Computing the Expected Excess
+        final Duration expectedExcess;
+        expectedExcess= Duration.between(timeVarShiftTimeOut, timeVarActualTimeOut).abs();
+
+        //Comparing actual and expected excess values
+        assertEquals(expectedExcess, timeVarActualExcess);
+        System.out.println("Expected Excess: " + expectedExcess);
+
+    }
+
+    public void verifyDisplayedEDeficit(){
+        WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(60));
+        tlvDeficit = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".cell-formattedExcess > .fs.fw-normal.primary-font")));
+        actualTlv = tlvDeficit.getText();
+        System.out.println("Actual Deficit: " + actualTlv);
+
+        //Converting Time String Value to Time variable
+        LocalTime timeVarShiftTimeOut = LocalTime.parse(shiftTimeOut);
+        LocalTime timeVarActualTimeOut = LocalTime.parse(actualTimeOut);
+        LocalTime timeVarActualExcess = LocalTime.parse(actualTlv);
+
+        //Computing the Expected Deficit
+        final Duration expectedDeficit;
+        expectedDeficit= Duration.between(timeVarShiftTimeOut, timeVarActualTimeOut).abs();
+
+        //Comparing actual and expected deficit values
+        assertEquals(expectedDeficit, timeVarActualExcess);
+        System.out.println("Expected Deficit: " + expectedDeficit);
+
     }
 }

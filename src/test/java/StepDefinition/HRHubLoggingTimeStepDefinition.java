@@ -109,11 +109,25 @@ public class HRHubLoggingTimeStepDefinition {
 
     @Then("The displayed Time Out is correct")
     public void the_displayed_time_out_is_correct() {
-
+        log.verifyDisplayedTimeOut();
     }
 
     @When("The user has clicked Time Out")
     public void the_user_has_clicked_time_out() throws InterruptedException {
         log.timeOut();
+    }
+
+    @Then("The displayed Late is correct")
+    public void theDisplayedLateIsCorrect() {
+        log.verifyDisplayedLate();
+    }
+
+    @Then("The displayed Excess is correct")
+    public void theDisplayedExcessIsCorrect() {
+        log.verifyDisplayedExcess();
+    }
+
+    @Then("The displayed Deficit is correct")
+    public void theDisplayedDeficitIsCorrect() {
     }
 }

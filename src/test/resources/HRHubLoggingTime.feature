@@ -138,7 +138,7 @@ Feature: HR Hub - Logging Time
     Then The displayed schedule is correct "<shiftSchedule>"
     Examples:
       | emailAddress                             | password               | shiftSchedule   |
-      | testKnit25-1-123-21-25-29@mailinator.com | knit@25-1-123-21-25-34 | 15:00PM-00:00AM |
+      | testKnit25-1-123-21-25-29@mailinator.com | knit@25-1-123-21-25-34 | 23:00PM-08:00AM |
 
   Scenario Outline: To verify that the displayed Time In is correct
     Given The user is in the Login Page
@@ -170,6 +170,56 @@ Feature: HR Hub - Logging Time
     Examples:
       | emailAddress                           | password             |
       | testKnit7-2-123-22-9-32@mailinator.com | knit@7-2-123-22-9-36 |
+
+  #Pre-requisite: The user has a fixed schedule and has logged in late
+  Scenario Outline: To verify that the displayed Late is correct in the Attendance Table
+    Given The user is in the Login Page
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the HR Hub - Dashboard
+    When The user has clicked Time In
+    Given The user is in My Attendance Page
+    Then The displayed Late is correct
+    Examples:
+      | emailAddress                           | password             | shiftTimeIn |
+      | testKnit7-2-123-22-9-32@mailinator.com | knit@7-2-123-22-9-36 | 23:00PM     |
+
+  #Pre-requisite: The user has a fixed schedule and has time out late. User now has excess work hours.
+  Scenario Outline: To verify that the displayed Late is correct in the Attendance Table
+    Given The user is in the Login Page
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the HR Hub - Dashboard
+    When The user has clicked Time Out
+    Given The user is in My Attendance Page
+    Then The displayed Excess is correct
+    Examples:
+      | emailAddress                           | password             | shiftTimeOut |
+      | testKnit7-2-123-22-9-32@mailinator.com | knit@7-2-123-22-9-36 | 08:00AM      |
+
+  #Pre-requisite: The user has a fixed schedule and has time out early. User now has deficit work hours.
+  Scenario Outline: To verify that the displayed Late is correct in the Attendance Table
+    Given The user is in the Login Page
+    When The user has entered the email address "<emailAddress>" for login
+    And The user has clicked on Next button for login
+    And The user has entered the password "<password>" for login
+    And The user has clicked Submit button
+    Then The user will proceed to Knit Dashboard after login
+    Given The user is in the HR Hub - Dashboard
+    When The user has clicked Time Out
+    Given The user is in My Attendance Page
+    Then The displayed Deficit is correct
+    Examples:
+      | emailAddress                           | password             | shiftTimeOut |
+      | testKnit7-2-123-22-9-32@mailinator.com | knit@7-2-123-22-9-36 | 08:00AM      |
+
+  #Status
 
 #   Scenario: Debug current day --> DEBUGGER
 #    Then The current day is displayed correctly
